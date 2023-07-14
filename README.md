@@ -1,2 +1,4 @@
 # GreatStudier-Rewrite
-A C++/Ruby rewrite for GreatStudier with cross-language integration (for desktop + web)
+A Ruby rewrite for at least the GreatStudier database
+
+Maybe an extra C++ rewrite for desktop
