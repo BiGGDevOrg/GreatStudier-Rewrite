@@ -15,9 +15,6 @@ class CardSetsController < ApplicationController
 
   def create
     @set = CardSet.new(set_params)
-    @set.cards << Card.new(term: 'a', definition: 'b')
-    @set.cards << Card.new(term: 'c', definition: 'b')
-    @set.cards << Card.new(term: 'e', definition: 'b')
     respond_to do |format|
       if @set.save
         format.html { redirect_to card_set_url(@set), notice: "Set successfully created." }
