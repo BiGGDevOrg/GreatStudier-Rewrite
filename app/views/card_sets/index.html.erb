@@ -1,4 +1,9 @@
 <h1>All Sets</h1>
-<% @sets.each do |set| %>
-  <h3><%= link_to set.name, card_set_url(set.slug), class: 'btn btn-primary' %></h3> <p><%= set.description %></p>
+<% if @sets.empty? %>
+  <p>There are no sets yet. Be the first to create one!</p>
+<% else %>
+  <% @sets.each do |set| %>
+    <h3><%= link_to set.name, card_set_url(set.slug), class: 'btn btn-primary' %></h3> <p><%= set.description %></p>
+  <% end %>
 <% end %>
+<%= link_to 'Create New Set', new_card_set_path %>

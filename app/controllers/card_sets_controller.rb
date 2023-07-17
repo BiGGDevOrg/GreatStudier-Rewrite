@@ -46,6 +46,7 @@ class CardSetsController < ApplicationController
   end
 
   def destroy
+    @set.cards.destroy_all
     @set.destroy
     redirect_to card_sets_path
   end

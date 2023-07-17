@@ -1,6 +1,6 @@
 <%= simple_form_for @set do |f| %>
-  <%= f.input :name, label: 'Set Name'%>
-  <%= f.input :description, label: 'Set Description', as: :rich_text_area%>
+  <%= f.input :name, label: 'Set Name' %>
+  <%= f.input :description, label: 'Set Description', as: :rich_text_area %>
 
   <br>
   <h3>Set Terms</h3>
@@ -10,7 +10,9 @@
   <%= f.simple_fields_for :cards do |p| %>
     <%= p.input :term %>
     <%= p.input :definition %>
+  <br>
   <% end %>
 
   <%= f.button :submit, class: 'btn btn-primary' %>
+  <%= link_to 'Back to All Sets', card_sets_path %>
 <% end %>

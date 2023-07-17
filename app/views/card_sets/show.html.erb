@@ -10,7 +10,7 @@
     </p>
   <% end %>
 </h3>
-<%= link_to 'Delete Set', card_set_path(@set), method: :delete %>
+<%= button_to 'Delete Set', @set, method: :delete %>
 <%= link_to 'Edit Set', edit_card_set_path(@set) %>
 <%= link_to 'New Set', new_card_set_path %>
 <%= link_to 'Main Page', root_path %>
