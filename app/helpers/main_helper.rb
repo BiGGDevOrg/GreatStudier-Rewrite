@@ -1,2 +1,2 @@
-class MainHelper
+module MainHelper
 end
