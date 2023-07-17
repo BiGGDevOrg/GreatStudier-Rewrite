@@ -122,10 +122,16 @@ GEM
       reline (>= 0.3.1)
     error_highlight (0.5.1)
     erubi (1.12.0)
+    ffi (1.15.5)
+    friendly_id (5.5.0)
+      activerecord (>= 4.0.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
+    image_processing (1.12.2)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     importmap-rails (1.2.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
@@ -145,6 +151,7 @@ GEM
       net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
+    mini_magick (4.12.0)
     mini_mime (1.1.2)
     minitest (5.18.1)
     msgpack (1.7.1)
@@ -185,11 +192,16 @@ GEM
     reline (0.3.6)
       io-console (~> 0.5)
     rexml (3.2.5)
+    ruby-vips (2.1.4)
+      ffi (~> 1.12)
     rubyzip (2.3.2)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    simple_form (5.2.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -233,12 +245,15 @@ DEPENDENCIES
   capybara
   debug
   error_highlight (>= 0.4.0)
+  friendly_id
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   pg (~> 1.1)
   puma (>= 5.0)
   rails!
   selenium-webdriver
+  simple_form
   sprockets-rails
   stimulus-rails
   turbo-rails
