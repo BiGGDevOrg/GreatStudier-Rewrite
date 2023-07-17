@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :card_sets, path: 'set'
+  resources :card_sets, path: 's'
 
   root "main#index"
 
