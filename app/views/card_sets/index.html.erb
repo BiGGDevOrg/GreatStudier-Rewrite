@@ -1,0 +1,4 @@
+<h1>All Sets</h1>
+<% @sets.each do |set| %>
+  <h3><%= link_to set.name, card_set_url(set.slug), class: 'btn btn-primary' %></h3> <p><%= set.description %></p>
+<% end %>

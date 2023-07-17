@@ -10,10 +10,14 @@ class CardSetsController < ApplicationController
 
   def new
     @set = CardSet.new
+    @cards = @set.cards.build
   end
 
   def create
     @set = CardSet.new(set_params)
+    @set.cards << Card.new(term: 'a', definition: 'b')
+    @set.cards << Card.new(term: 'c', definition: 'b')
+    @set.cards << Card.new(term: 'e', definition: 'b')
     respond_to do |format|
       if @set.save
         format.html { redirect_to card_set_url(@set), notice: "Set successfully created." }
@@ -29,6 +33,7 @@ class CardSetsController < ApplicationController
   end
 
   def update
+    @set.update(set_params)
     respond_to do |format|
       if @set.save
         format.html { redirect_to card_set_url(@set), notice: "Set successfully updated." }
@@ -45,6 +50,10 @@ class CardSetsController < ApplicationController
     redirect_to card_sets_path
   end
 
+  def new_card
+    @cards = Card.new
+  end
+
   private
 
   def set_card_set
@@ -52,6 +61,6 @@ class CardSetsController < ApplicationController
   end
 
   def set_params
-    params.require(:card_set).permit(:name, :description)
+    params.require(:card_set).permit(:name, :description, cards_attributes: [:id, :term, :definition, :_destroy])
   end
 end

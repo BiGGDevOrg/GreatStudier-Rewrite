@@ -1,6 +1,16 @@
 <h1>View Set</h1>
 <h2><%= @set.name %></h2>
 <h3><%= @set.description %></h3>
+<h2>TERMS</h2>
+<h3>
+  <% @set.cards.each do |card| %>
+    <p>
+      <%= card.term %>
+      <%= card.definition %>
+    </p>
+  <% end %>
+</h3>
+<%= link_to 'Delete Set', card_set_path(@set), method: :delete %>
 <%= link_to 'Edit Set', edit_card_set_path(@set) %>
 <%= link_to 'New Set', new_card_set_path %>
 <%= link_to 'Main Page', root_path %>

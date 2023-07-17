@@ -1,5 +1,16 @@
 <%= simple_form_for @set do |f| %>
   <%= f.input :name, label: 'Set Name'%>
   <%= f.input :description, label: 'Set Description', as: :rich_text_area%>
+
+  <br>
+  <h3>Set Terms</h3>
+  <br>
+
+  <% # TODO: Add button that creates a new card for more inputs %>
+  <%= f.simple_fields_for :cards do |p| %>
+    <%= p.input :term %>
+    <%= p.input :definition %>
+  <% end %>
+
   <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>

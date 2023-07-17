@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_07_17_021655) do
+ActiveRecord::Schema[7.1].define(version: 2023_07_17_130543) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,8 +63,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_07_17_021655) do
   create_table "cards", force: :cascade do |t|
     t.string "term"
     t.string "definition"
-    t.bigint "card_sets_id", null: false
-    t.index ["card_sets_id"], name: "index_cards_on_card_sets_id"
+    t.bigint "card_set_id", null: false
+    t.index ["card_set_id"], name: "index_cards_on_card_set_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -80,5 +80,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_07_17_021655) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "cards", "card_sets", column: "card_sets_id"
+  add_foreign_key "cards", "card_sets"
 end
