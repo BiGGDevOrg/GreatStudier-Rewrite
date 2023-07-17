@@ -3,15 +3,18 @@
   <%= f.input :description, label: 'Set Description', as: :rich_text_area %>
 
   <br>
-  <h3>Set Terms</h3>
-  <br>
+  <h3>Terms</h3>
 
-  <% # TODO: Add button that creates a new card for more inputs %>
-  <%= f.simple_fields_for :cards do |p| %>
-    <%= p.input :term %>
-    <%= p.input :definition %>
+  <div id='card-items'>
+    <%= f.simple_fields_for :cards do |card| %>
+      <%= render 'card_fields', form: card %>
+    <% end %>
+  </div>
+
+  <%= link_to_add_nested(f, :cards, '#card-items', link_text: 'Add Term') %>
+
   <br>
-  <% end %>
+  <br>
 
   <%= f.button :submit, class: 'btn btn-primary' %>
   <%= link_to 'Back to All Sets', card_sets_path %>

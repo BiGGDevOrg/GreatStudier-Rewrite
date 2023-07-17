@@ -10,7 +10,7 @@ class CardSetsController < ApplicationController
 
   def new
     @set = CardSet.new
-    @cards = @set.cards.build
+    @set.cards.build
   end
 
   def create
@@ -49,10 +49,6 @@ class CardSetsController < ApplicationController
     @set.cards.destroy_all
     @set.destroy
     redirect_to card_sets_path
-  end
-
-  def new_card
-    @cards = Card.new
   end
 
   private
