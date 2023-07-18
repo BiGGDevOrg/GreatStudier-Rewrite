@@ -2,7 +2,12 @@
 # yarn lockfile v1
 
 
-vanilla-nested@^1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/vanilla-nested/-/vanilla-nested-1.7.1.tgz#e7a00723ffd6396d10e15053cd58b54f5bac8be6"
-  integrity sha512-z8nOa5n3bczhSno27TCABMc9qKjPcMP4iW6THqWxmtPZ8ZsFtoOl6XJGsqTvemkjSRpyFq4Zgqe7wZgCH9GHLw==
+"vanilla-nested@^1.7.1":
+  "integrity" "sha512-z8nOa5n3bczhSno27TCABMc9qKjPcMP4iW6THqWxmtPZ8ZsFtoOl6XJGsqTvemkjSRpyFq4Zgqe7wZgCH9GHLw=="
+  "resolved" "https://registry.npmjs.org/vanilla-nested/-/vanilla-nested-1.7.1.tgz"
+  "version" "1.7.1"
+
+"yarn@^1.22.19":
+  "integrity" "sha512-/0V5q0WbslqnwP91tirOvldvYISzaqhClxzyUKXYxs07yUILIs5jx/k6CFe8bvKSkds5w+eiOqta39Wk3WxdcQ=="
+  "resolved" "https://registry.npmjs.org/yarn/-/yarn-1.22.19.tgz"
+  "version" "1.22.19"
