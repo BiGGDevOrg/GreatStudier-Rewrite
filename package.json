@@ -1,6 +1,14 @@
 {
   "dependencies": {
+    "@hotwired/stimulus": "^3.2.1",
+    "@hotwired/turbo-rails": "^7.3.0",
+    "@rails/actiontext": "^7.0.6",
+    "esbuild": "^0.18.14",
+    "trix": "^2.0.5",
     "vanilla-nested": "^1.7.1",
     "yarn": "^1.22.19"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
   }
 }
