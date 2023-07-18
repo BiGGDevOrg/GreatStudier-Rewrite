@@ -8,7 +8,7 @@ export default class extends Controller {
     index: Number
   }
 
-  static targets = ["label", "term", "guess", "correctness"]
+  static targets = ["label", "term", "guess", "button", "correctness"]
 
   correct = 0
   incorrect = 0
@@ -42,6 +42,7 @@ export default class extends Controller {
         this.incorrect += 1;
         break;
     }
+    this.buttonTarget.disabled = true
     this.update_label()
     await new Promise(r => setTimeout(r, 1000));
     this.next_card()
@@ -49,9 +50,9 @@ export default class extends Controller {
 
   next_card() {
     if (this.current_index + 1 === this.random_cards.length) {
-      // TODO: show results and return to card_set_path
       return
     }
+    this.buttonTarget.disabled = false
     this.current_index += 1
     this.current_card = this.random_cards[this.current_index]
     this.update_label()
