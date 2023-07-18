@@ -3,6 +3,7 @@
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^7.3.0",
     "@rails/actiontext": "^7.0.6",
+    "damerau-levenshtein": "^1.0.8",
     "esbuild": "^0.18.14",
     "trix": "^2.0.5",
     "vanilla-nested": "^1.7.1",

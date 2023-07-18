@@ -149,6 +149,11 @@
   dependencies:
     spark-md5 "^3.0.1"
 
+damerau-levenshtein@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/damerau-levenshtein/-/damerau-levenshtein-1.0.8.tgz#b43d286ccbd36bc5b2f7ed41caf2d0aba1f8a6e7"
+  integrity sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==
+
 esbuild@^0.18.14:
   version "0.18.14"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.18.14.tgz#3df4cfef66c55176583359d79fd416ffeb3cdf7e"

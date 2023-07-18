@@ -1,0 +1,8 @@
+<h1>STUDY</h1>
+<div data-controller="study" data-study-cards-value="<%= @cards %>" data-study-index-value="<%= @index %>" data-study->
+  <p data-study-target="term"></p>
+  <form>
+    <input type="text" data-study-target="guess" /><br>
+    <button type="button" data-action="click->study#check">Check</button>
+  </form>
+</div>
