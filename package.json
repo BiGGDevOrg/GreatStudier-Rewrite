@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "vanilla-nested": "^1.7.1"
+    "vanilla-nested": "^1.7.1",
+    "yarn": "^1.22.19"
   }
 }
