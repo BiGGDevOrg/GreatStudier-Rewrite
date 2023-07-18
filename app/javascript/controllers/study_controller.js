@@ -8,21 +8,42 @@ export default class extends Controller {
     index: Number
   }
 
-  static targets = ["term", "guess"]
+  static targets = ["label", "term", "guess", "correctness"]
+
+  correct = 0
+  incorrect = 0
 
   connect() {
     this.randomize_card()
     this.current_index = this.indexValue
     this.current_card = this.random_cards[this.current_index]
     this.print_card()
+    this.update_label()
   }
 
   print_card() {
+    this.guessTarget.value = ""
+    this.correctnessTarget.textContent = ""
     this.termTarget.textContent = this.current_card.term
   }
 
-  check(event) {
-    util.validate_answer(this.guessTarget.value.trim(), this.current_card.definition)
+  async check(event) {
+    switch (util.validate_answer(this.guessTarget.value.trim(), this.current_card.definition.trim())) {
+      case 0:
+        this.correctnessTarget.textContent = "Correct!";
+        this.correct += 1;
+        break;
+      case 1:
+        this.correctnessTarget.textContent = "Mostly Correct!";
+        this.correct += 1;
+        break;
+      case 2:
+        this.correctnessTarget.textContent = "Incorrect!";
+        this.incorrect += 1;
+        break;
+    }
+    this.update_label()
+    await new Promise(r => setTimeout(r, 1000));
     this.next_card()
   }
 
@@ -33,7 +54,12 @@ export default class extends Controller {
     }
     this.current_index += 1
     this.current_card = this.random_cards[this.current_index]
+    this.update_label()
     this.print_card()
+  }
+
+  update_label() {
+    this.labelTarget.textContent = `Question ${this.current_index + 1}/${this.random_cards.length} Correct: ${this.correct}, Incorrect: ${this.incorrect}`
   }
 
 
