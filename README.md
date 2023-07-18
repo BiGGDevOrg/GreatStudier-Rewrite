@@ -8,4 +8,4 @@ Make sure you've got Docker, Ruby 3.2.0, and a relatively recent version of Node
 - `bundle install`
 - `yarn install`
 - `docker-compose up`
-- `bin/rails s`
+- `bin/dev`
