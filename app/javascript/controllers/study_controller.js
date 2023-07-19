@@ -14,17 +14,16 @@ export default class extends Controller {
   incorrect = 0
 
   connect() {
-    this.randomize_card()
+    this.random_cards = util.shuffle(this.cardsValue)
     this.current_index = this.indexValue
     this.current_card = this.random_cards[this.current_index]
     this.print_card()
-    this.update_label()
   }
 
   print_card() {
-    this.guessTarget.value = ""
-    this.correctnessTarget.textContent = ""
     this.termTarget.textContent = this.current_card.term
+    this.update_label()
+    this.reset_fields()
     const input = document.getElementById('input');
     input.focus();
     input.select();
@@ -58,11 +57,8 @@ export default class extends Controller {
     if (this.current_index + 1 === this.random_cards.length) {
       return
     }
-    this.buttonTarget.disabled = false
-    this.guessTarget.disabled = false
     this.current_index += 1
     this.current_card = this.random_cards[this.current_index]
-    this.update_label()
     this.print_card()
   }
 
@@ -70,7 +66,10 @@ export default class extends Controller {
     this.labelTarget.textContent = `Question ${this.current_index + 1}/${this.random_cards.length} Correct: ${this.correct}, Incorrect: ${this.incorrect}`
   }
 
-  randomize_card() {
-    this.random_cards = util.shuffle(this.cardsValue)
+  reset_fields() {
+    this.guessTarget.value = ""
+    this.correctnessTarget.textContent = ""
+    this.buttonTarget.disabled = false
+    this.guessTarget.disabled = false
   }
 }

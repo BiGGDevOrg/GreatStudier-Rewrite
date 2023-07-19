@@ -8,7 +8,7 @@ export function shuffle(array) {
     return array;
 }
 
-export function validate_answer(guess, answer){
+export function validate_answer(guess, answer) {
     if (guess === answer) {
         return 0;
     }
@@ -18,4 +18,3 @@ export function validate_answer(guess, answer){
     }
     return 2;
 }
-
