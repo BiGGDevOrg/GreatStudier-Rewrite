@@ -25,10 +25,13 @@ export default class extends Controller {
     this.guessTarget.value = ""
     this.correctnessTarget.textContent = ""
     this.termTarget.textContent = this.current_card.term
+    const input = document.getElementById('input');
+    input.focus();
+    input.select();
   }
 
   async check(event) {
-    switch (util.validate_answer(this.guessTarget.value.trim(), this.current_card.definition.trim())) {
+    switch (util.validate_answer(this.guessTarget.value.toLowerCase().trim(), this.current_card.definition.toLowerCase().trim())) {
       case 0:
         this.correctnessTarget.textContent = "Correct!";
         this.correct += 1;
@@ -66,7 +69,6 @@ export default class extends Controller {
   update_label() {
     this.labelTarget.textContent = `Question ${this.current_index + 1}/${this.random_cards.length} Correct: ${this.correct}, Incorrect: ${this.incorrect}`
   }
-
 
   randomize_card() {
     this.random_cards = util.shuffle(this.cardsValue)
