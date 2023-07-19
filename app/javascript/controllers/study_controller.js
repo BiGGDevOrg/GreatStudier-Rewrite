@@ -43,6 +43,7 @@ export default class extends Controller {
         break;
     }
     this.buttonTarget.disabled = true
+    this.guessTarget.disabled = true
     this.update_label()
     await new Promise(r => setTimeout(r, 1000));
     this.next_card()
@@ -53,6 +54,7 @@ export default class extends Controller {
       return
     }
     this.buttonTarget.disabled = false
+    this.guessTarget.disabled = false
     this.current_index += 1
     this.current_card = this.random_cards[this.current_index]
     this.update_label()
