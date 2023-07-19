@@ -35,10 +35,12 @@ export default class extends Controller {
         break;
       case 1:
         this.correctnessTarget.textContent = "Mostly Correct!";
+        this.correctnessTarget.textContent += ` The correct answer is "${this.current_card.definition}"`;
         this.correct += 1;
         break;
       case 2:
         this.correctnessTarget.textContent = "Incorrect!";
+        this.correctnessTarget.textContent += ` The correct answer is "${this.current_card.definition}"`;
         this.incorrect += 1;
         break;
     }
