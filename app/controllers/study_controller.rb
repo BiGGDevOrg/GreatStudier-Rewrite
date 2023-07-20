@@ -4,7 +4,6 @@ class StudyController < CardSetsController
   def show
     @card_set_id = @card_set.friendly_id
     @cards = @card_set.cards.to_json
-    @index = 0
   end
 
   private

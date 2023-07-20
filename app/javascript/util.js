@@ -9,6 +9,8 @@ export function shuffle(array) {
 }
 
 export function validate_answer(guess, answer) {
+    guess = guess.toLowerCase().trim()
+    answer = answer.toLowerCase().trim()
     if (guess === answer) {
         return 0;
     }

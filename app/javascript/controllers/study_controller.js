@@ -4,8 +4,7 @@ import * as util from "../util"
 // Connects to data-controller="study"
 export default class extends Controller {
   static values = {
-    cards: Array,
-    index: Number
+    cards: Array
   }
 
   static targets = ["label", "term", "guess", "button", "correctness"]
@@ -15,7 +14,7 @@ export default class extends Controller {
 
   connect() {
     this.random_cards = util.shuffle(this.cardsValue)
-    this.current_index = this.indexValue
+    this.current_index = 0
     this.current_card = this.random_cards[this.current_index]
     this.print_card()
   }
@@ -30,7 +29,7 @@ export default class extends Controller {
   }
 
   async check(event) {
-    switch (util.validate_answer(this.guessTarget.value.toLowerCase().trim(), this.current_card.definition.toLowerCase().trim())) {
+    switch (util.validate_answer(this.guessTarget.value, this.current_card.definition)) {
       case 0:
         this.correctnessTarget.textContent = "Correct!";
         this.correct += 1;
