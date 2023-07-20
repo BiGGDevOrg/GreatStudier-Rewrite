@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :card_sets, path: 's' do
+    get "learn", to: "learn#show"
     get "study", to: "study#show"
   end
 

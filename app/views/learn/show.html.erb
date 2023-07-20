@@ -1,0 +1,15 @@
+<h1>LEARN</h1>
+<h2>Learn by typing the definition of each term</h2>
+
+<div data-controller="learn" data-learn-cards-value="<%= @cards %>" data-learn-id-value="<%= @card_set_id %>">
+  <p data-learn-target="label"></p>
+  <p data-learn-target="term"></p>
+  <p data-learn-target="definition"></p>
+  <br>
+  <form>
+    <input type="text" data-learn-target="guess" data-action="keypress.enter->learn#check:prevent" id="input" placeholder="Type an answer"><br>
+    <button type="button" data-learn-target="button" data-action="click->learn#check">Check</button>
+  </form>
+  <br>
+</div>
+<%= link_to "Back to Set", card_set_url(@card_set_id) %>
