@@ -35,7 +35,8 @@ export default class extends Controller {
   }
 
   check(event) {
-    if (this.guessTarget.value !== this.current_card.definition) {
+    if (this.guessTarget.value.toLowerCase().trim() !== this.current_card.definition.toLowerCase().trim()) {
+      this.guessTarget.value = ""
       return
     }
     util.increment_knowledge(this.current_card, this.idValue)
