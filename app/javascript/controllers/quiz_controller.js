@@ -109,6 +109,8 @@ export default class extends Controller {
       } else {
         this.correctnessTarget.textContent = "Come back for your next review in " + this.times[0] + " hours, " + this.times[1] + " minutes, and " + this.times[2] + " seconds."
       }
+    } else {
+      this.correctnessTarget.style.display = "none"
     }
   }
 }
