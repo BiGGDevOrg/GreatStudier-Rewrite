@@ -62,8 +62,6 @@ export function get_studyable(list, set_id) {
     if (!(set_id in sets)) {
         sets[set_id] = {}
         window.localStorage.setItem("sets", JSON.stringify(sets))
-        console.log(window.localStorage.getItem("sets"))
-        console.log(list)
         return [list, review_words]
     }
     for (let i = 0; i < list.length; i++) {
@@ -84,7 +82,10 @@ export function get_studyable(list, set_id) {
     return [new_words, review_words]
 }
 
-export function get_time_to_next_studyable(list, set_id) {
+export function get_time_to_next_review(list, set_id) {
+    if (list.length === 0) {
+        return null
+    }
     let sets = JSON.parse(window.localStorage.getItem("sets"))
     let set = sets[set_id]
     let min_time = 2147483647

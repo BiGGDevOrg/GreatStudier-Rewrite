@@ -1,6 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 import * as util from "../util"
 
+
+const NEW_CHUNK_SIZE = 8;
+
 // Connects to data-controller="learn"
 export default class extends Controller {
   static values = {
@@ -9,8 +12,6 @@ export default class extends Controller {
   }
 
   static targets = ["label", "term", "definition", "guess", "button"]
-
-  NEW_CHUNK_SIZE = 8;
 
   connect() {
     this.random_cards = this.set_cards()
@@ -46,7 +47,7 @@ export default class extends Controller {
 
   next_card() {
     if (this.current_index + 1 === this.random_cards.length) {
-      this.redirect()
+      window.location.pathname = `/s/${this.idValue}/review`
       return
     }
     this.current_index += 1
@@ -71,12 +72,8 @@ export default class extends Controller {
     this.buttonTarget.style.display = "none"
   }
 
-  redirect() {
-    window.location.pathname = "/s/" + this.idValue + "/review"
-  }
-
   set_cards() {
-    let all_learnable = util.shuffle(util.get_studyable(this.cardsValue, this.idValue)[0])
-    return all_learnable.slice(0, Math.min(this.NEW_CHUNK_SIZE, all_learnable.length))
+    let learnable = util.shuffle(util.get_studyable(this.cardsValue, this.idValue)[0])
+    return learnable.slice(0, Math.min(NEW_CHUNK_SIZE, learnable.length))
   }
 }

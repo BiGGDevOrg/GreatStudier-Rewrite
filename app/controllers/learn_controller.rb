@@ -1,4 +1,4 @@
-class LearnController < CardSetsController
+class LearnController < ApplicationController
   before_action :set_card_set
 
   def show
