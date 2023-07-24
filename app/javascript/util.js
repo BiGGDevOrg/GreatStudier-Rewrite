@@ -89,7 +89,9 @@ export function increment_knowledge(key, set_id, correctness = true) {
     if (!(key.id in set)) {
         set[key.id] = {"last_covered": Math.trunc(Date.now() / 1000), "repetition_spot": 0}
     }
-    set[key.id]["last_covered"] = Math.trunc(Date.now() / 1000)
+    if (correctness) {
+        set[key.id]["last_covered"] = Math.trunc(Date.now() / 1000)
+    }
     set[key.id]["repetition_spot"] = correctness ? set[key.id]["repetition_spot"] + 1 : Math.min(AFTER_WRONG_RETURN_REP_TO, set[key.id]["repetition_spot"])
     window.localStorage.setItem("sets", JSON.stringify(sets))
 }
