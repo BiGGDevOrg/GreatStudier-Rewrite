@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import * as util from "../util"
 
 
-const NEW_CHUNK_SIZE = 8;
+const NEW_CHUNK_SIZE = 8
 
 // Connects to data-controller="learn"
 export default class extends Controller {

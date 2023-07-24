@@ -16,6 +16,6 @@
 <%= link_to 'Main Page', root_path %>
 <br>
 <br>
-<%= link_to 'Learn', card_set_path + '/learn' %>
-<%= link_to 'Study', card_set_path + '/study' %>
-<%= link_to 'Review', card_set_path + '/review' %>
+<%= link_to 'Learn', card_set_learn_path(@set.friendly_id) %>
+<%= link_to 'Review', card_set_review_path(@set.friendly_id) %>
+<%= link_to 'Study', card_set_study_path(@set.friendly_id) %>

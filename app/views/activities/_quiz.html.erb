@@ -1,5 +1,4 @@
-<h1>STUDY</h1>
-<div data-controller="quiz" data-quiz-cards-value="<%= @cards %>" data-quiz-is-review-value="false" data-quiz-id-value="<%= @card_set_id %>">
+<div data-controller="quiz" data-quiz-cards-value="<%= @cards %>" data-quiz-is-review-value="<%= @is_review %>" data-quiz-id-value="<%= @card_set_id %>">
   <p data-quiz-target="label"></p>
   <p data-quiz-target="term"></p>
   <br>
@@ -10,4 +9,3 @@
   <br>
   <p data-quiz-target="correctness"></p>
 </div>
-<%= link_to "Back to Set", card_set_url(@card_set_id) %>
