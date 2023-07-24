@@ -47,7 +47,7 @@ export default class extends Controller {
 
   next_card() {
     if (this.current_index + 1 === this.random_cards.length) {
-      window.location.pathname = `/s/${this.idValue}/review`
+      window.location.replace(`/s/${this.idValue}/review`)
       return
     }
     this.current_index += 1
