@@ -3,6 +3,7 @@ import levenshtein from "damerau-levenshtein";
 
 const SPACED_REPETITION = [
     -2147483648,
+    0,
     14400,
     86400,
     259200,
@@ -83,15 +84,29 @@ export function get_studyable(list, set_id) {
     return [new_words, review_words]
 }
 
+export function get_time_to_next_studyable(list, set_id) {
+    let sets = JSON.parse(window.localStorage.getItem("sets"))
+    let set = sets[set_id]
+    let min_time = 2147483647
+    let repetition = 2147483647
+    for (let i = 0; i < list.length; i++) {
+        let id = list[i].id
+        if (!(id in set)) {
+            return null
+        }
+        repetition = Math.min(repetition, set[id]["repetition_spot"])
+        min_time = Math.min(min_time, set[id]["last_covered"] + SPACED_REPETITION[set[id]["repetition_spot"]] - Date.now() / 1000)
+    }
+    return repetition === 0 ? null : [min_time / 3600 | 0, (min_time % 3600) / 60 | 0, (min_time % 3600) % 60 | 0]
+}
+
 export function increment_knowledge(key, set_id, correctness = true) {
     let sets = JSON.parse(window.localStorage.getItem("sets"))
     let set = sets[set_id]
     if (!(key.id in set)) {
-        set[key.id] = {"last_covered": Math.trunc(Date.now() / 1000), "repetition_spot": 0}
+        set[key.id] = {"last_covered": 0, "repetition_spot": 0}
     }
-    if (correctness) {
-        set[key.id]["last_covered"] = Math.trunc(Date.now() / 1000)
-    }
+    set[key.id]["last_covered"] = correctness ? Math.trunc(Date.now() / 1000) : set[key.id]["last_covered"]
     set[key.id]["repetition_spot"] = correctness ? set[key.id]["repetition_spot"] + 1 : Math.min(AFTER_WRONG_RETURN_REP_TO, set[key.id]["repetition_spot"])
     window.localStorage.setItem("sets", JSON.stringify(sets))
 }

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :card_sets, path: 's' do
     get "learn", to: "learn#show"
     get "study", to: "study#show"
+    get "review", to: "review#show"
   end
 
   root "main#index"

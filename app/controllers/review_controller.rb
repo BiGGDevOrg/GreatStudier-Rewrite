@@ -1,4 +1,4 @@
-class ReviewController < ApplicationController
+class ReviewController < CardSetsController
   before_action :set_card_set
 
   def show

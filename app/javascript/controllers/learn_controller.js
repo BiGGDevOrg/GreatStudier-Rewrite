@@ -46,7 +46,7 @@ export default class extends Controller {
 
   next_card() {
     if (this.current_index + 1 === this.random_cards.length) {
-      this.end()
+      this.redirect()
       return
     }
     this.current_index += 1
@@ -69,7 +69,10 @@ export default class extends Controller {
     this.definitionTarget.textContent = ""
     this.guessTarget.style.display = "none"
     this.buttonTarget.style.display = "none"
-    this.guessTarget.style.display = "none"
+  }
+
+  redirect() {
+    window.location.pathname = "/s/" + this.idValue + "/review"
   }
 
   set_cards() {
