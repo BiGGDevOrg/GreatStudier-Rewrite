@@ -1,13 +1,13 @@
 <h1>STUDY</h1>
-<div data-controller="study" data-study-cards-value="<%= @cards %>">
-  <p data-study-target="label"></p>
-  <p data-study-target="term"></p>
+<div data-controller="quiz" data-quiz-cards-value="<%= @cards %>">
+  <p data-quiz-target="label"></p>
+  <p data-quiz-target="term"></p>
   <br>
   <form>
-    <input type="text" data-study-target="guess" data-action="keypress.enter->study#check" id="input" placeholder="Type an answer"><br>
-    <button type="button" data-study-target="button" data-action="click->study#check">Check</button>
+    <input type="text" data-quiz-target="guess" data-action="keypress.enter->quiz#check" id="input" placeholder="Type an answer"><br>
+    <button type="button" data-quiz-target="button" data-action="click->quiz#check">Check</button>
   </form>
   <br>
-  <p data-study-target="correctness"></p>
+  <p data-quiz-target="correctness"></p>
 </div>
 <%= link_to "Back to Set", card_set_url(@card_set_id) %>
