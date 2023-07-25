@@ -3,8 +3,12 @@
   <p data-quiz-target="term"></p>
   <br>
   <form>
-    <input type="text" data-quiz-target="guess" data-action="keypress.enter->quiz#check" id="input" placeholder="Type an answer"><br>
-    <button type="button" data-quiz-target="button" data-action="click->quiz#check">Check</button>
+    <input type="text" data-quiz-target="guess" data-action="keypress.enter->quiz#check" id="input"
+           placeholder="Type an answer." style="width:100%">
+    <br>
+    <button type="button" data-quiz-target="button" data-action="click->quiz#check" class="btn btn-success justify-right">
+      Check
+    </button>
   </form>
   <br>
   <p data-quiz-target="correctness"></p>
