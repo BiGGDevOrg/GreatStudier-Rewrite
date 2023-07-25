@@ -1,5 +1,5 @@
 <%= simple_form_for @set do |f| %>
-  <%= f.text_field :name, placeholder: 'Set Name', style: 'width:100%'%>
+  <h3><%= f.input_field :name, placeholder: 'Set Name', style: 'width:100%'%></h3>
   <%= f.input :description, label: 'Set Description', as: :rich_text_area %>
 
   <hr>
@@ -18,5 +18,5 @@
   <br>
 
   <%= f.submit 'Save', class: 'btn btn-primary' %>
-  <%= link_to 'Back to All Sets', card_sets_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Cancel', @set.persisted? ? card_set_path : card_sets_path, class: 'btn btn-secondary' %>
 <% end %>

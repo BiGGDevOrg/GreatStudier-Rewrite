@@ -1,9 +1,6 @@
 <div class="wrapper-div">
-  <%= form.label :term, 'Term' %>
-  <%= form.label :definition, 'Definition' %>
-  <br>
-  <%= form.text_field :term %>
-  <%= form.text_field :definition %>
+  <%= form.text_field :term, placeholder: 'Term', style: 'width:45%' %>
+  <%= form.text_field :definition, placeholder: 'Definition', style: 'width:45%' %>
   <%= link_to_remove_nested(form, link_text: 'Remove', link_classes: 'btn btn-danger') %>
   <br>
   <br>
