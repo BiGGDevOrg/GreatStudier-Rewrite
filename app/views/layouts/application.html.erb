@@ -12,9 +12,13 @@
 
   <body>
     <%= render partial: 'shared/navbar' %>
-    <%= render partial: 'shared/bottom_bar' %>
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <%= yield %>
-    </main>
+    <%#= render partial: 'shared/bottom_bar' %>
+    <div class="container">
+      <div class="row">
+        <main class="py-md-3">
+          <%= yield %>
+        </main>
+      </div>
+    </div>
   </body>
 </html>

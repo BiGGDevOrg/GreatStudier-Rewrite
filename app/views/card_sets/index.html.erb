@@ -1,10 +1,23 @@
-<h1>All Sets</h1>
-<% if @sets.empty? %>
-  <p>There are no sets yet. Be the first to create one!</p>
-<% else %>
-  <% @sets.each do |set| %>
-    <h3><%= link_to set.name, card_set_url(set.slug), class: 'btn btn-primary' %></h3> <p><%= set.description %></p>
-  <% end %>
-<% end %>
-<%= link_to 'Create New Set', new_card_set_path %>
-<%= link_to 'Main Page', root_path %>
+<div class="row">
+  <div class="col">
+    <h1>All Sets</h1>
+    <br>
+    <% if @sets.empty? %>
+      <p>There are no sets yet. Be the first to create one!</p>
+    <% else %>
+      <% @sets.each do |set| %>
+        <div class="card px-2 py-2">
+          <a class="card-block stretched-link text-decoration-none" href="<%= card_set_url(set.slug) %>">
+            <h2 class="card-title"><%= set.name %></h2>
+            <br>
+            <p class="card-subtitle"><%= set.description %></p>
+          </a>
+        </div>
+        <br>
+      <% end %>
+    <% end %>
+    <%= link_to 'Create New Set', new_card_set_path %>
+    <%= link_to 'Main Page', root_path %>
+    <br>
+  </div>
+</div>
