@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import * as util from "../util"
 
 
-const REIVEW_CHUNK_SIZE = 15
+const REVIEW_CHUNK_SIZE = 15
 
 // Connects to data-controller="quiz"
 export default class extends Controller {
