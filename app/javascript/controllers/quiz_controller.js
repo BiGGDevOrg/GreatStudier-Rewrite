@@ -1,6 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 import * as util from "../util"
 
+
+const REIVEW_CHUNK_SIZE = 15
+
 // Connects to data-controller="quiz"
 export default class extends Controller {
   static values = {
@@ -15,7 +18,7 @@ export default class extends Controller {
   incorrect = 0
 
   connect() {
-    this.random_cards = this.isReviewValue ? util.shuffle(util.get_studyable(this.cardsValue, this.idValue)[1]) : util.shuffle(this.cardsValue)
+    this.random_cards = this.set_cards()
     if (this.random_cards.length === 0) {
       this.end()
       return
@@ -112,5 +115,13 @@ export default class extends Controller {
 
     this.guessTarget.style.display = "none"
     this.buttonTarget.style.display = "none"
+  }
+
+  set_cards() {
+    if (this.isReviewValue) {
+      let reviewable = util.shuffle(util.get_studyable(this.cardsValue, this.idValue)[1])
+      return reviewable.slice(0, Math.min(REVIEW_CHUNK_SIZE, reviewable.length))
+    }
+    return util.shuffle(this.cardsValue)
   }
 }
