@@ -38,6 +38,7 @@ export default class extends Controller {
   }
 
   async check(event) {
+    let timeout_time = 1000
     switch (util.validate_answer(this.guessTarget.value, this.current_card.definition)) {
       case 0:
         this.correctnessTarget.textContent = "Correct!"
@@ -50,6 +51,7 @@ export default class extends Controller {
         this.correctnessTarget.textContent = "Mostly Correct!"
         this.correctnessTarget.textContent += ` The correct answer is "${this.current_card.definition}"`
         this.correct += 1
+        timeout_time = 3500
         if (this.isReviewValue) {
           util.increment_knowledge(this.current_card, this.idValue)
         }
@@ -58,6 +60,7 @@ export default class extends Controller {
         this.correctnessTarget.textContent = "Incorrect!"
         this.correctnessTarget.textContent += ` The correct answer is "${this.current_card.definition}"`
         this.incorrect += 1
+        timeout_time = 3500
         if (this.isReviewValue) {
           util.increment_knowledge(this.current_card, this.idValue, false)
         }
@@ -66,7 +69,7 @@ export default class extends Controller {
     this.buttonTarget.disabled = true
     this.guessTarget.disabled = true
     this.update_label()
-    await new Promise(r => setTimeout(r, 1000));
+    await new Promise(r => setTimeout(r, timeout_time));
     this.next_card()
   }
 
