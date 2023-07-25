@@ -1,8 +1,9 @@
 <%= simple_form_for @set do |f| %>
-  <%= f.input :name, label: 'Set Name' %>
+  <%= f.text_field :name, placeholder: 'Set Name', style: 'width:100%'%>
   <%= f.input :description, label: 'Set Description', as: :rich_text_area %>
 
-  <br>
+  <hr>
+
   <h3>Terms</h3>
 
   <div id='card-items'>
@@ -11,11 +12,11 @@
     <% end %>
   </div>
 
-  <%= link_to_add_nested(f, :cards, '#card-items', link_text: 'Add Term') %>
+  <%= link_to_add_nested(f, :cards, '#card-items', link_text: 'Add Term', link_classes: 'btn btn-success') %>
 
   <br>
   <br>
 
-  <%= f.button :submit, class: 'btn btn-primary' %>
-  <%= link_to '<button type="button">Back to All Sets</button>'.html_safe, card_sets_path %>
+  <%= f.submit 'Save', class: 'btn btn-primary' %>
+  <%= link_to 'Back to All Sets', card_sets_path, class: 'btn btn-secondary' %>
 <% end %>
