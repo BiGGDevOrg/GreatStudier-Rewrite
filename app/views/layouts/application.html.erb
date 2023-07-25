@@ -11,9 +11,7 @@
   </head>
 
   <body>
-    <%= render partial: 'shared/navbar' %>
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-1 py-md-2">
-      <%= yield %>
-    </main>
+    <main><%= yield %></main>
+    <%= render partial: 'shared/bottom_bar' %>
   </body>
 </html>
