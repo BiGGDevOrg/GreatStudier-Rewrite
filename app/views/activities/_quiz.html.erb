@@ -1,0 +1,11 @@
+<div data-controller="quiz" data-quiz-cards-value="<%= @cards %>" data-quiz-is-review-value="<%= @is_review %>" data-quiz-id-value="<%= @card_set_id %>">
+  <p data-quiz-target="label"></p>
+  <p data-quiz-target="term"></p>
+  <br>
+  <form>
+    <input type="text" data-quiz-target="guess" data-action="keypress.enter->quiz#check" id="input" placeholder="Type an answer"><br>
+    <button type="button" data-quiz-target="button" data-action="click->quiz#check">Check</button>
+  </form>
+  <br>
+  <p data-quiz-target="correctness"></p>
+</div>
