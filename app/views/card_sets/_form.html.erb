@@ -1,6 +1,9 @@
 <%= simple_form_for @set do |f| %>
-  <h3><%= f.input_field :name, placeholder: 'Set Name', style: 'width:100%'%></h3>
-  <%= f.input :description, label: 'Set Description', as: :rich_text_area %>
+  <h3>Set Name</h3>
+  <h3><%= f.input_field :name, placeholder: 'Give it a title...', style: 'width:100%'%></h3>
+  <br>
+  <h4>Set Description</h4>
+  <%= f.input :description, label: false, placeholder: 'Give it a meaning...', as: :rich_text_area %>
 
   <hr>
 
@@ -11,6 +14,8 @@
       <%= render 'card_fields', form: card %>
     <% end %>
   </div>
+
+  <br>
 
   <%= link_to_add_nested(f, :cards, '#card-items', link_text: 'Add Term', link_classes: 'btn btn-success') %>
 

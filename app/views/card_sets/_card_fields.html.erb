@@ -1,4 +1,13 @@
-<div class="wrapper-div">
+<style>
+  .even-space {
+      line-height: 2.0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+</style>
+
+<div class="wrapper-div even-space">
   <%= form.text_field :term, placeholder: 'Term', style: 'width:45%' %>
   <%= form.text_field :definition, placeholder: 'Definition', style: 'width:45%' %>
   <%= link_to_remove_nested(form, link_text: 'Remove', link_classes: 'btn btn-danger') %>
