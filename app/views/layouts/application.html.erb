@@ -1,3 +1,12 @@
+<style>
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 90vh;
+  }
+</style>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,13 +21,13 @@
 
   <body>
     <%= render partial: 'shared/navbar' %>
-    <%#= render partial: 'shared/bottom_bar' %>
-    <div class="container">
+    <div class="container page-wrapper">
       <div class="row">
         <main class="py-md-3">
           <%= yield %>
         </main>
       </div>
     </div>
+    <%= render partial: 'shared/bottom_bar' %>
   </body>
 </html>
