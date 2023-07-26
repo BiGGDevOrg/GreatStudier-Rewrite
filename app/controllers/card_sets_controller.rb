@@ -10,7 +10,7 @@ class CardSetsController < ApplicationController
 
   def new
     @set = CardSet.new
-    4.times { @set.cards.build }
+    3.times { @set.cards.build }
   end
 
   def create
