@@ -56,7 +56,6 @@ export function get_studyable(list, set_id) {
     let review_words = []
     if (!("sets" in window.localStorage)) {
         window.localStorage.setItem("sets", JSON.stringify({}))
-        return [list, review_words]
     }
     let sets = JSON.parse(window.localStorage.getItem("sets"))
     if (!(set_id in sets)) {
