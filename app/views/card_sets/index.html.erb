@@ -4,6 +4,7 @@
     <br>
     <% if @sets.empty? %>
       <p>There are no sets yet. Be the first to create one!</p>
+      <br>
     <% else %>
       <% @sets.each do |set| %>
         <div class="card px-2 py-2">
@@ -16,8 +17,8 @@
         <br>
       <% end %>
     <% end %>
-    <%= link_to 'Create New Set', new_card_set_path %>
-    <%= link_to 'Main Page', root_path %>
+    <%= link_to 'New Set', new_card_set_path, class: 'btn btn-primary' %>
+    <%= link_to 'Main Page', root_path, class: 'btn btn-primary' %>
     <br>
   </div>
 </div>
