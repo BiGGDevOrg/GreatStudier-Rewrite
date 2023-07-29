@@ -15,7 +15,7 @@
         <div class="card px-2 py-2 shadow p-3 mb-4 bg-white rounded">
           <a class="card-block stretched-link text-decoration-none" href="<%= card_set_url(set.slug) %>">
             <h2 class="card-title"><%= set.name %></h2>
-            <br>
+            <p class="text-secondary"><%= set.cards.length %> Term(s)</p>
             <p class="card-subtitle"><%= set.description %></p>
           </a>
         </div>
