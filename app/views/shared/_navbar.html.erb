@@ -21,8 +21,6 @@
         <a class="nav-link text-primary" href="https://github.com/ez500/GreatStudier-Rewrite" target="_blank">GitHub</a>
       </li>
     </ul>
-    <% unless current_page?(:controller => 'card_sets', :action => 'new') or current_page?(:controller => 'card_sets', :action => 'index') %>
     <%=  link_to 'New Set', new_card_set_path, class: 'btn btn-outline-primary', style: 'margin-right: 15px;' %>
-    <% end %>
   </div>
 </nav>
