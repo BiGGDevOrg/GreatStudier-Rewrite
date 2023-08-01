@@ -23,5 +23,5 @@
   <br>
 
   <%= f.submit 'Save', class: 'btn btn-primary' %>
-  <%= link_to 'Cancel', @set.persisted? ? card_set_path : card_sets_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Cancel',:back, class: 'btn btn-secondary' %>
 <% end %>
