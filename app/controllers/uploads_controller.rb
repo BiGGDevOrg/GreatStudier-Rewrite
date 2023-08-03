@@ -18,7 +18,7 @@ class UploadsController < ApplicationController
         file_data.shift
         file_data.each do |line|
           line_data = line.split('::')
-          card_set.cards << Card.new(term: line_data[0], definition: line_data[1])
+          card_set.cards << Card.new(term: line_data[0].strip, definition: line_data[1].strip)
         end
         card_set.save
         redirect_to card_set_path(card_set), notice: 'File successfully uploaded.'

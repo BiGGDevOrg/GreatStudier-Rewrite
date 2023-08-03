@@ -1,5 +1,5 @@
 <nav class="navbar bg-light navbar-expand-lg sticky-top p-1 shadow">
-  <a class="navbar-brand px-2 text-primary" href="/">
+  <a class="navbar-brand px-2 text-primary" href="<%= root_path %>">
     <b>GreatStudier</b>
   </a>
 
@@ -11,10 +11,10 @@
   <div class="collapse navbar-collapse justify-content-between">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item item">
-        <a class="nav-link text-primary" href="<%= root_url %>">Home</a>
+        <a class="nav-link text-primary" href="<%= root_path %>">Home</a>
       </li>
       <li class="nav-item item">
-        <a class="nav-link text-primary" href="<%= card_sets_url %>">Explore Sets</a>
+        <a class="nav-link text-primary" href="<%= card_sets_path %>">Explore Sets</a>
       </li>
       <li class="nav-item item">
         <a class="nav-link text-primary" href="https://github.com/BiGGDevOrg/GreatStudier-Rewrite" target="_blank">GitHub</a>
@@ -25,7 +25,7 @@
         New Set
       </a>
       <div class="dropdown-menu dropdown-menu-md-end">
-        <a class="dropdown-item" href="<%= new_card_set_url %>">Create a New Set</a>
+        <a class="dropdown-item" href="<%= new_card_set_path %>">Create a New Set</a>
         <a class="dropdown-item" href="<%= new_upload_path %>">Upload a Set</a>
       </div>
     </button>

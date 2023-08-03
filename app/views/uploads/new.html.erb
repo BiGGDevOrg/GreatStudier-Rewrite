@@ -1,6 +1,7 @@
 <% content_for :title do %>
   Upload Set
 <% end %>
+
 <h1>Upload Set</h1>
 
 <br>
@@ -8,5 +9,8 @@
 <%= simple_form_for :upload do |f| %>
   <%= f.input_field :file, as: :file %>
   <br>
-  <%= f.button :submit, class: 'btn btn-primary', style: 'margin-top: 10px;' %>
+  <div style="margin-top: 10px;">
+    <%= f.submit 'Upload', class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', :back, class: 'btn btn-secondary' %>
+  </div>
 <% end %>
