@@ -9,7 +9,7 @@ class UploadsController < ApplicationController
       file_name = @file.original_filename
       file_data = @file.read.split("\n")
 
-      if file_data[0].trim != '## * greatstudier *'
+      if file_data[0].strip != '## * greatstudier *'
         redirect_to new_upload_path, notice: 'File is not a valid greatstudier file.'
       else
 
