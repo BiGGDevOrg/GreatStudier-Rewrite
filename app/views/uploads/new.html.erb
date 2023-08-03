@@ -1,8 +1,12 @@
+<% content_for :title do %>
+  Upload Set
+<% end %>
 <h1>Upload Set</h1>
 
 <br>
 
 <%= simple_form_for :upload do |f| %>
-  <%= f.input :file, as: :file %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
+  <%= f.input_field :file, as: :file %>
+  <br>
+  <%= f.button :submit, class: 'btn btn-primary', style: 'margin-top: 10px;' %>
 <% end %>
