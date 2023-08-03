@@ -11,6 +11,7 @@
   <% end %>
 </h3>
 <%= button_to 'Delete Set', @set, method: :delete %>
+<%= link_to 'Download Set', download_card_set_path(@set)%>
 <%= link_to 'Edit Set', edit_card_set_path(@set) %>
 <%= link_to 'New Set', new_card_set_path %>
 <%= link_to 'Main Page', root_path %>

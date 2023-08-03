@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     get "learn", to: "activities#learn"
     get "review", to: "activities#review"
     get "study", to: "activities#study"
+
+    member do
+      get :download
+    end
   end
 
   root "main#index"
