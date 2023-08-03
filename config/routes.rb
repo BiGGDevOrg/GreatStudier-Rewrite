@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  get :upload, to: "uploads#new", as: :new_upload
+  post :upload, to: "uploads#create"
+
   resources :card_sets, path: 's' do
     get "learn", to: "activities#learn"
     get "review", to: "activities#review"
