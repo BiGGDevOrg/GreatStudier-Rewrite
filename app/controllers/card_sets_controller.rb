@@ -1,5 +1,5 @@
 class CardSetsController < ApplicationController
-  before_action :set_card_set, only: [:show, :edit, :update, :destroy]
+  before_action :set_card_set, only: [:show, :edit, :update, :destroy, :download]
 
   def index
     @sets = CardSet.all
@@ -47,6 +47,16 @@ class CardSetsController < ApplicationController
     @set.destroy
     redirect_to card_sets_path
   end
+
+  def download
+    cards = @set.cards
+    card_data = cards.map { |card| "#{card.term.gsub('::', '') } :: #{card.definition.gsub('::', '') } :: -1 :: 0" }.join("\n")
+    send_data(
+      "## * greatstudier *\n#{card_data}",
+      :filename => @set.name.underscore + '.txt'
+    )
+  end
+
 
   private
 

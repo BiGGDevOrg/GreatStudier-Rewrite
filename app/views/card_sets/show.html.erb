@@ -1,7 +1,3 @@
-<% content_for :title do %>
-  <%= @set.name %>
-<% end %>
-
 <div class="row">
   <div class="col">
     <h1><%= @set.name %></h1>
@@ -37,7 +33,10 @@
 
     <hr>
 
+    <%= link_to 'Download Set', download_card_set_path(@set), class: 'btn btn-primary', style: 'margin-bottom: 10px;'%>
+    <br>
     <div style="float: left; width: auto; margin-right: 10px;"><%= link_to 'Edit Set', edit_card_set_path(@set), class: 'btn btn-warning' %></div>
     <%= button_to 'Delete Set', @set, method: :delete, class: 'btn btn-danger'%>
+
   </div>
 </div>
