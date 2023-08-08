@@ -13,10 +13,16 @@
     <% else %>
       <% @sets.each do |set| %>
         <div class="card px-2 py-2 shadow p-3 mb-4 bg-white rounded">
-          <a class="card-block stretched-link text-decoration-none" href="<%= card_set_url(set.slug) %>">
-            <h2 class="card-title"><%= set.name %></h2>
-            <p class="text-secondary"><%= set.cards.length %> Term(s)</p>
-            <p class="card-subtitle"><%= set.description %></p>
+          <a class="card-block stretched-link text-decoration-none" style="margin-left: 10px;" href="<%= card_set_url(set.slug) %>">
+            <div style="display: flex; align-items: center; justify-content: space-between">
+              <h2 class="card-title"><%= set.name %></h2>
+              <p class="text-secondary" style="margin-right: 10px;"><%= set.cards.length %> Term(s)</p>
+            </div>
+            <% if set.description.empty? %>
+              <p class="card-subtitle" style="font-style: italic;">No description<%= set.description %></p>
+            <% else %>
+              <p class="card-subtitle"><%= set.description %></p>
+            <% end %>
           </a>
         </div>
         <br>
