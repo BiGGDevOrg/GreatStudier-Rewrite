@@ -9,8 +9,10 @@ class UploadsController < ApplicationController
       file_name = @file.original_filename
       file_data = @file.read.split("\n")
 
-      if file_data[0].strip != '## * greatstudier *'
-        redirect_to new_upload_path, notice: 'File is not a valid greatstudier file.'
+      if file_data.empty?
+        render :new, notice: 'File is not a valid greatstudier file.'
+      elsif file_data[0].strip != '## * greatstudier *'
+        render :new, notice: 'File is not a valid greatstudier file.'
       else
 
         card_set = CardSet.new(name: file_name)
