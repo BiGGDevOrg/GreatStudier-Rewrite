@@ -53,7 +53,7 @@ class CardSetsController < ApplicationController
     card_data = cards.map { |card| "#{card.term.gsub('::', '') } :: #{card.definition.gsub('::', '') } :: -1 :: 0" }.join("\n")
     send_data(
       "## * greatstudier *\n#{card_data}",
-      :filename => @set.name.underscore + '.txt'
+      :filename => @set.name.underscore
     )
   end
 
