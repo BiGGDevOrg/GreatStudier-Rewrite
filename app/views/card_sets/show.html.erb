@@ -1,22 +1,48 @@
-<h1>View Set</h1>
-<h2><%= @set.name %></h2>
-<h3><%= @set.description %></h3>
-<h2>TERMS</h2>
-<h3>
-  <% @set.cards.each do |card| %>
-    <p>
-      <%= card.term %>
-      <%= card.definition %>
-    </p>
-  <% end %>
-</h3>
-<%= button_to 'Delete Set', @set, method: :delete %>
-<%= link_to 'Download Set', download_card_set_path(@set)%>
-<%= link_to 'Edit Set', edit_card_set_path(@set) %>
-<%= link_to 'New Set', new_card_set_path %>
-<%= link_to 'Main Page', root_path %>
-<br>
-<br>
-<%= link_to 'Learn', card_set_learn_path(@set.friendly_id) %>
-<%= link_to 'Review', card_set_review_path(@set.friendly_id) %>
-<%= link_to 'Study', card_set_study_path(@set.friendly_id) %>
+<% content_for :title do %>
+  <%= @set.name %>
+<% end %>
+
+<div class="row">
+  <div class="col">
+    <h1><%= @set.name %></h1>
+    <h5><%= @set.description %></h5>
+    <hr>
+
+    <h3>Activities</h3>
+
+    <h5>Long Term Memory</h5>
+    <%= link_to 'Learn', card_set_learn_path(@set.friendly_id), class: 'btn btn-primary' %>
+    <%= link_to 'Review', card_set_review_path(@set.friendly_id), class: 'btn btn-primary' %>
+    <br>
+    <br>
+
+    <h5>Short Term Memory</h5>
+    <%= link_to 'Study', card_set_study_path(@set.friendly_id), class: 'btn btn-primary' %>
+    <br>
+
+    <hr>
+
+    <h3>TERMS (<%= @set.cards.length %>)</h3>
+    <br>
+
+    <% @set.cards.each do |card| %>
+      <div class="card px-2 py-2 shadow-sm p-3 mb-2 bg-white rounded border-2">
+        <div class="row">
+          <p class="col-md-6"><%= card.term %></p>
+          <p class="col-md-6"><%= card.definition %></p>
+        </div>
+      </div>
+      <br>
+    <% end %>
+
+    <hr>
+
+    <%= link_to 'Download Set', download_card_set_path(@set), class: 'btn btn-primary', style: 'margin-bottom: 10px;'%>
+    <br>
+    <div style="float: left; width: auto; margin-right: 10px;">
+      <%= link_to 'Edit Set', edit_card_set_path(@set), class: 'btn btn-warning' %>
+    </div>
+    <%= button_to 'Delete Set', @set, method: :delete, class: 'btn btn-danger'%>
+
+  </div>
+</div>

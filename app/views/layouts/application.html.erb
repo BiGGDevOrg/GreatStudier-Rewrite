@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GreatStudier</title>
+    <title>
+      <%= yield :title %> • GreatStudier
+    </title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +13,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render partial: 'shared/navbar' %>
+    <div class="container page-wrapper">
+      <div class="row">
+        <main class="py-md-3">
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+    <%= render partial: 'shared/bottom_bar' %>
   </body>
 </html>

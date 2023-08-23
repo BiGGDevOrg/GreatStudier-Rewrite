@@ -1,2 +1,9 @@
+<% content_for :title do %>
+  Edit Set • <%= @set.name %>
+<% end %>
+
 <h1>Edit Set</h1>
+
+<br>
+
 <%= render 'form', set: @set %>
