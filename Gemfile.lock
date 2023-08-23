@@ -118,7 +118,6 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.2.0)
       railties (>= 6.0.0)
-    damerau-levenshtein (1.3.3)
     date (3.3.3)
     debug (1.8.0)
       irb (>= 1.5.0)
@@ -175,7 +174,7 @@ GEM
     pg (1.5.3)
     pg (1.5.3-x64-mingw-ucrt)
     public_suffix (5.0.3)
-    puma (6.3.0)
+    puma (6.3.1)
       nio4r (~> 2.0)
     racc (1.7.1)
     rack (3.0.8)
@@ -254,7 +253,6 @@ DEPENDENCIES
   bootsnap
   capybara
   cssbundling-rails (~> 1.2)
-  damerau-levenshtein
   debug
   error_highlight (>= 0.4.0)
   foreman
