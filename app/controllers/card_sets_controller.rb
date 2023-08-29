@@ -43,9 +43,10 @@ class CardSetsController < ApplicationController
   end
 
   def destroy
+    name = @set.name
     @set.cards.destroy_all
     @set.destroy
-    redirect_to card_sets_path
+    redirect_to card_sets_path, notice: "Set #{name} successfully deleted."
   end
 
   def download
