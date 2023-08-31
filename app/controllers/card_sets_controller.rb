@@ -20,6 +20,7 @@ class CardSetsController < ApplicationController
         format.html { redirect_to card_set_url(@set), notice: "Set successfully created." }
         format.json { render :show, status: :created, location: @set }
       else
+        flash[:danger] = "Unable to create set."
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @set.errors, status: :unprocessable_entity }
       end
@@ -36,6 +37,7 @@ class CardSetsController < ApplicationController
         format.html { redirect_to card_set_url(@set), notice: "Set successfully updated." }
         format.json { render :show, status: :ok, location: @set }
       else
+        flash[:danger] = "Unable to updated set."
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @set.errors, status: :unprocessable_entity }
       end
@@ -43,8 +45,10 @@ class CardSetsController < ApplicationController
   end
 
   def destroy
+    name = @set.name
     @set.cards.destroy_all
     @set.destroy
+    flash[:warning] = "Set \"#{name}\" successfully deleted."
     redirect_to card_sets_path
   end
 
