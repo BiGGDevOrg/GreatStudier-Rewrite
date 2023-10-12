@@ -2,7 +2,7 @@ class CardSetsController < ApplicationController
   before_action :set_card_set, only: [:show, :edit, :update, :destroy, :download]
 
   def index
-    @sets = CardSet.all
+    @sets = CardSet.order(:name).page params[:page]
   end
 
   def show
