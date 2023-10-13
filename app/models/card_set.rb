@@ -5,5 +5,5 @@ class CardSet < ApplicationRecord
   has_many :cards, dependent: :destroy, inverse_of: :card_set
   accepts_nested_attributes_for :cards, reject_if: :all_blank, allow_destroy: true
 
-  paginates_per 20
+  paginates_per 50
 end
