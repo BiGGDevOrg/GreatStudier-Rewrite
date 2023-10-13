@@ -1,5 +1,5 @@
 <div class="wrapper-div card-field">
-  <%= form.text_field :term, placeholder: 'Term', style: 'width:45%; margin-bottom: 25px' %>
-  <%= form.text_field :definition, placeholder: 'Definition', style: 'width:45%; margin-bottom: 25px' %>
+  <%= form.text_field :term, placeholder: 'Term', style: 'width:45%; margin-bottom: 25px', required: true %>
+  <%= form.text_field :definition, placeholder: 'Definition', style: 'width:45%; margin-bottom: 25px', required: true %>
   <%= link_to_remove_nested(form, link_text: 'Remove', link_classes: 'btn btn-danger', tag_attributes: {style: 'margin-bottom: 25px'}) %>
 </div>

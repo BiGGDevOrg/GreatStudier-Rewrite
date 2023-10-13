@@ -7,7 +7,7 @@
 <br>
 
 <%= simple_form_for :upload do |f| %>
-  <%= f.input_field :file, as: :file %>
+  <%= f.input_field :file, as: :file, required: true %>
   <br>
   <div style="margin-top: 10px;">
     <%= f.submit 'Upload', class: 'btn btn-primary' %>
