@@ -6,4 +6,6 @@ class CardSet < ApplicationRecord
   accepts_nested_attributes_for :cards, reject_if: :all_blank, allow_destroy: true
 
   belongs_to :user
+
+  paginates_per 50
 end
