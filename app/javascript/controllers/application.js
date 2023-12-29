@@ -1,4 +1,5 @@
 import { Application } from "@hotwired/stimulus"
+import Hotkeys from 'stimulus-hotkeys'
 
 const application = Application.start()
 
@@ -7,3 +8,4 @@ application.debug = false
 window.Stimulus   = application
 
 export { application }
+application.register('hotkeys', Hotkeys)
