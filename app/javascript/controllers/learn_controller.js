@@ -29,9 +29,9 @@ export default class extends Controller {
     this.definitionTarget.textContent = this.current_card.definition
     this.update_label()
     this.reset_fields()
-    const input = document.getElementById("input");
-    input.focus();
-    input.select();
+    const input = document.getElementById("input")
+    input.focus()
+    input.select()
   }
 
   check(event) {

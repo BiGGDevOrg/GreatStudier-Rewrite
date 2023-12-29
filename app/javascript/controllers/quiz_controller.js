@@ -36,13 +36,13 @@ export default class extends Controller {
     this.termTarget.textContent = this.current_card.term
     this.reset_fields()
     this.update_label()
-    const input = document.getElementById('input');
-    input.focus();
-    input.select();
+    const input = document.getElementById('input')
+    input.focus()
+    input.select()
   }
 
   check() {
-    if (this.ended) return
+    if (this.ended) { return }
     if (this.nextAvailable) {
       this.next_card()
       return
@@ -55,17 +55,18 @@ export default class extends Controller {
         break
       case 1:
         this.correctnessTarget.textContent = "Mostly Correct!"
-        this.correctnessTarget.textContent += ` The correct answer is "${this.current_card.definition}"`
+        this.correctnessTarget.textContent += ` The correct answer is "${this.current_card.definition}."`
         this.correct += 1
         break
       case 2:
         this.correctnessTarget.textContent = "Incorrect!"
-        this.correctnessTarget.textContent += ` The correct answer is "${this.current_card.definition}"`
+        this.correctnessTarget.textContent += ` The correct answer is "${this.current_card.definition}".`
         this.incorrect += 1
         this.correctness = false
         this.overwriteButtonTarget.hidden = false 
         break
     }
+    this.correctnessTarget.textContent += ' Press ENTER to continue.'
     this.nextAvailable = true
     this.buttonTarget.textContent = "Next" 
     this.guessTarget.disabled = true
@@ -80,7 +81,7 @@ export default class extends Controller {
   }
 
   async next_card() {
-    await new Promise(r => setTimeout(r, 100));
+    await new Promise(r => setTimeout(r, 100))
     if (this.isReviewValue) {
       util.increment_knowledge(this.current_card, this.idValue, this.correctness)
     }
