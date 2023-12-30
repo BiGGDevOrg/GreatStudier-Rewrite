@@ -48,25 +48,26 @@ export default class extends Controller {
       return
     }
 
+    let msg = ''
     switch (util.validate_answer(this.guessTarget.value, this.current_card.definition)) {
       case 0:
-        this.correctnessTarget.textContent = "Correct!"
+        msg = "Correct!"
         this.correct += 1
         break
       case 1:
-        this.correctnessTarget.textContent = "Mostly Correct!"
-        this.correctnessTarget.textContent += ` The correct answer is "${this.current_card.definition}."`
+        msg = "Mostly Correct!"
+        msg += `<br>The correct answer is "${this.current_card.definition}."`
         this.correct += 1
         break
       case 2:
-        this.correctnessTarget.textContent = "Incorrect!"
-        this.correctnessTarget.textContent += ` The correct answer is "${this.current_card.definition}".`
+        msg = "Incorrect!"
+        msg += `<br>The correct answer is "${this.current_card.definition}".`
         this.incorrect += 1
         this.correctness = false
         this.overwriteButtonTarget.hidden = false 
         break
     }
-    this.correctnessTarget.textContent += ' Press ENTER to continue.'
+    this.correctnessTarget.innerHTML = `${msg}<br><br>Press ENTER to continue.`
     this.nextAvailable = true
     this.buttonTarget.textContent = "Next" 
     this.guessTarget.disabled = true
@@ -97,7 +98,21 @@ export default class extends Controller {
   }
 
   update_label() {
-    this.labelTarget.textContent = `Question ${this.current_index + 1}/${this.random_cards.length} Correct: ${this.correct}, Incorrect: ${this.incorrect}`
+    let p_correct = this.correct / this.random_cards.length * 100
+    let p_incorrect = this.incorrect / this.random_cards.length * 100
+    let header = `Question ${this.current_index + 1}/${this.random_cards.length}; Correct: ${this.correct}, Incorrect: ${this.incorrect}`
+    this.labelTarget.innerHTML = ` 
+      <br>
+      <p>${header}</p>
+      <div class="progress-stacked">
+        <div class="progress" role="progressbar" aria-label="Correct Progress" aria-valuenow="${p_correct}" aria-valuemin="0" aria-valuemax="100" style="width: ${p_correct}%"> 
+          <div class="progress-bar bg-success"></div>
+        </div>
+        <div class="progress" role="progressbar" aria-label="Incorrect Progress" aria-valuenow="${p_incorrect}" aria-valuemin="0" aria-valuemax="100" style="width: ${p_incorrect}%"> 
+          <div class="progress-bar bg-danger"></div>
+        </div>
+      </div>
+    `
   }
 
   reset_fields() {
