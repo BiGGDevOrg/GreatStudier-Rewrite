@@ -3,8 +3,8 @@
   <br>
   <h4 data-quiz-target="term"></h4>
   <br>
-  <form>
-    <input type="text" data-quiz-target="guess" data-action="keypress.enter->quiz#check" id="input"
+  <form onSubmit="return false">
+    <input type="text" data-quiz-target="guess" data-action="keypress.enter->quiz#check:prevent" id="input"
            placeholder="Type an answer." style="width:100%; margin-bottom: 20px">
     <br>
     <button type="button" data-quiz-target="button" data-action="click->quiz#check" class="btn btn-success">
