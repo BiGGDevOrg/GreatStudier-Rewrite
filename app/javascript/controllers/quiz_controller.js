@@ -12,10 +12,14 @@ export default class extends Controller {
     id: String
   }
 
-  static targets = ["label", "term", "guess", "button", "correctness"]
+  static targets = ["label", "term", "guess", "button", "overwriteButton", "correctness"]
 
+  ended = false
   correct = 0
   incorrect = 0
+  correctness = true
+
+  nextAvailable = false  
 
   connect() {
     this.random_cards = this.set_cards()
@@ -30,76 +34,104 @@ export default class extends Controller {
 
   print_card() {
     this.termTarget.textContent = this.current_card.term
-    this.update_label()
     this.reset_fields()
-    const input = document.getElementById('input');
-    input.focus();
-    input.select();
+    this.update_label()
+    const input = document.getElementById('input')
+    input.focus()
+    input.select()
   }
 
-  async check(event) {
-    let timeout_time = 1000
+  check() {
+    if (this.ended) { return }
+    if (this.nextAvailable) {
+      this.next_card()
+      return
+    }
+
+    let msg = ''
     switch (util.validate_answer(this.guessTarget.value, this.current_card.definition)) {
       case 0:
-        this.correctnessTarget.textContent = "Correct!"
+        msg = "Correct!"
         this.correct += 1
-        if (this.isReviewValue) {
-          util.increment_knowledge(this.current_card, this.idValue)
-        }
         break
       case 1:
-        this.correctnessTarget.textContent = "Mostly Correct!"
-        this.correctnessTarget.textContent += ` The correct answer is "${this.current_card.definition}"`
+        msg = "Mostly Correct!"
+        msg += `<br>The correct answer is "${this.current_card.definition}."`
         this.correct += 1
-        timeout_time = 3500
-        if (this.isReviewValue) {
-          util.increment_knowledge(this.current_card, this.idValue)
-        }
         break
       case 2:
-        this.correctnessTarget.textContent = "Incorrect!"
-        this.correctnessTarget.textContent += ` The correct answer is "${this.current_card.definition}"`
+        msg = "Incorrect!"
+        msg += `<br>The correct answer is "${this.current_card.definition}".`
         this.incorrect += 1
-        timeout_time = 3500
-        if (this.isReviewValue) {
-          util.increment_knowledge(this.current_card, this.idValue, false)
-        }
+        this.correctness = false
+        this.overwriteButtonTarget.hidden = false 
         break
     }
-    this.buttonTarget.disabled = true
+    this.correctnessTarget.innerHTML = `${msg}<br><br>Press ENTER to continue.`
+    this.nextAvailable = true
+    this.buttonTarget.textContent = "Next" 
     this.guessTarget.disabled = true
     this.update_label()
-    await new Promise(r => setTimeout(r, timeout_time));
+  }
+  
+  overwrite() {
+    this.correct += 1
+    this.incorrect -= 1
+    this.correctness = true
     this.next_card()
   }
 
-  next_card() {
+  async next_card() {
+    await new Promise(r => setTimeout(r, 100))
+    if (this.isReviewValue) {
+      util.increment_knowledge(this.current_card, this.idValue, this.correctness)
+    }
+
     if (this.current_index + 1 === this.random_cards.length) {
       this.end()
       return
     }
     this.current_index += 1
     this.current_card = this.random_cards[this.current_index]
+    this.buttonTarget.textContent = "Check"
     this.print_card()
   }
 
   update_label() {
-    this.labelTarget.textContent = `Question ${this.current_index + 1}/${this.random_cards.length} Correct: ${this.correct}, Incorrect: ${this.incorrect}`
+    let p_correct = this.correct / this.random_cards.length * 100
+    let p_incorrect = this.incorrect / this.random_cards.length * 100
+    let header = `Question ${this.current_index + 1}/${this.random_cards.length}; Correct: ${this.correct}, Incorrect: ${this.incorrect}`
+    this.labelTarget.innerHTML = ` 
+      <br>
+      <p>${header}</p>
+      <div class="progress-stacked">
+        <div class="progress" role="progressbar" aria-label="Correct Progress" aria-valuenow="${p_correct}" aria-valuemin="0" aria-valuemax="100" style="width: ${p_correct}%"> 
+          <div class="progress-bar bg-success"></div>
+        </div>
+        <div class="progress" role="progressbar" aria-label="Incorrect Progress" aria-valuenow="${p_incorrect}" aria-valuemin="0" aria-valuemax="100" style="width: ${p_incorrect}%"> 
+          <div class="progress-bar bg-danger"></div>
+        </div>
+      </div>
+    `
   }
 
   reset_fields() {
-    this.guessTarget.value = ""
-    this.correctnessTarget.textContent = ""
     this.buttonTarget.disabled = false
     this.guessTarget.disabled = false
+    this.nextAvailable = false
+    this.correctness = true
+    this.overwriteButtonTarget.hidden = true
+    this.guessTarget.value = ""
+    this.correctnessTarget.textContent = ""
   }
 
   end() {
+    this.ended = true
     this.labelTarget.textContent = this.isReviewValue ? "Nothing new to review!" : "Finished study!"
 
     // don't display the correct/incorrect if there are no cards
     if (this.random_cards.length === 0) {
-      this.termTarget.style.display = "none"
+      this.termTarget.hidden = true
     } else {
       this.termTarget.textContent = `Correct: ${this.correct}, Incorrect: ${this.incorrect}`
       this.correctnessTarget.textContent = ""
@@ -116,8 +148,9 @@ export default class extends Controller {
       }
     }
 
-    this.guessTarget.style.display = "none"
-    this.buttonTarget.style.display = "none"
+    this.guessTarget.hidden = true
+    this.buttonTarget.hidden = true 
+    this.overwriteButtonTarget.hidden = true
   }
 
   set_cards() {

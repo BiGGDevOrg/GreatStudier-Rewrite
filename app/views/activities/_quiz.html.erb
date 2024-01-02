@@ -1,13 +1,17 @@
-<div data-controller="quiz" data-quiz-cards-value="<%= @cards %>" data-quiz-is-review-value="<%= @is_review %>" data-quiz-id-value="<%= @card_set_id %>">
-  <p data-quiz-target="label"></p>
-  <p data-quiz-target="term"></p>
+<div data-controller="hotkeys quiz" data-quiz-cards-value="<%= @cards %>" data-quiz-is-review-value="<%= @is_review %>" data-quiz-id-value="<%= @card_set_id %>" data-hotkeys-bindings-value='{"enter": "quiz#check"}'>
+  <div data-quiz-target="label"></div>
   <br>
-  <form>
-    <input type="text" data-quiz-target="guess" data-action="keypress.enter->quiz#check" id="input"
+  <h4 data-quiz-target="term"></h4>
+  <br>
+  <form onSubmit="return false">
+    <input type="text" data-quiz-target="guess" data-action="keypress.enter->quiz#check:prevent" id="input"
            placeholder="Type an answer." style="width:100%; margin-bottom: 20px">
     <br>
-    <button type="button" data-quiz-target="button" data-action="click->quiz#check" class="btn btn-success justify-right">
+    <button type="button" data-quiz-target="button" data-action="click->quiz#check" class="btn btn-success">
       Check
+    </button>
+    <button type="button" data-quiz-target="overwriteButton" data-action="click->quiz#overwrite" class="btn btn-success" hidden>
+      Overwrite Answer 
     </button>
   </form>
   <br>
