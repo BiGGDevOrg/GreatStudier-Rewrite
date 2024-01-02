@@ -29,12 +29,12 @@ export default class extends Controller {
     this.definitionTarget.textContent = this.current_card.definition
     this.update_label()
     this.reset_fields()
-    const input = document.getElementById("input");
-    input.focus();
-    input.select();
+    const input = document.getElementById("input")
+    input.focus()
+    input.select()
   }
 
-  check(event) {
+  check() {
     if (this.guessTarget.value.toLowerCase().trim() !== this.current_card.definition.toLowerCase().trim()) {
       this.guessTarget.value = ""
       return
@@ -57,7 +57,15 @@ export default class extends Controller {
   }
 
   update_label() {
-    this.labelTarget.textContent = `Question ${this.current_index + 1}/${this.random_cards.length}`
+    let percent = this.current_index / this.random_cards.length * 100
+    let header = `Question ${this.current_index + 1}/${this.random_cards.length}`
+    this.labelTarget.innerHTML = ` 
+      <br>
+      <p>${header}</p>
+      <div class="progress" role="progressbar" aria-label="Correct Progress" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100"> 
+        <div class="progress-bar bg-primary" style="width: ${percent}%"></div>
+      </div>
+    `
   }
 
   reset_fields() {
