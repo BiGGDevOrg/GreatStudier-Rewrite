@@ -1,6 +1,6 @@
 <%= simple_form_for @set do |f| %>
   <h3>Set Name</h3>
-  <h3><%= f.input_field :name, placeholder: 'Give it a title...', style: 'width:100%', required: true %></h3>
+  <h3><%= f.input_field :name, placeholder: 'Give it a name...', style: 'width:100%', required: true %></h3>
   <br>
   <h4>Set Description</h4>
   <%= f.input :description, label: false, placeholder: 'Describe your set...', as: :rich_text_area %>

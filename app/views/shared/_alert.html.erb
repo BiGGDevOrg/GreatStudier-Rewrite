@@ -1,6 +1,13 @@
 <% flash.each do |type, msg| %>
   <div class="alert alert-<%= type == "notice" ? "success" : type %> fade show alert-dismissible">
+  <% if msg.kind_of?(Array) %>
+    <% msg.each do |m| %>
+      <%= m %>
+      <br>
+    <% end %>
+  <% else %>
     <%= msg %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  <% end %>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% end %>
