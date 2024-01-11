@@ -22,9 +22,7 @@ class CardSetsController < ApplicationController
         format.json { render :show, status: :created, location: @set }
       else
         flash[:danger] = ["Unable to create set."]
-        @set.errors.each do |error|
-          flash[:danger] << error.full_message
-        end
+        flash[:danger].push(*@set.errors) 
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @set.errors, status: :unprocessable_entity }
       end
@@ -41,7 +39,8 @@ class CardSetsController < ApplicationController
         format.html { redirect_to card_set_url(@set), notice: "Set successfully updated." }
         format.json { render :show, status: :ok, location: @set }
       else
-        flash[:danger] = "Unable to update set."
+        flash[:danger] = ["Unable to update set."]
+        flash[:danger].push(*@set.errors) 
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @set.errors, status: :unprocessable_entity }
       end
