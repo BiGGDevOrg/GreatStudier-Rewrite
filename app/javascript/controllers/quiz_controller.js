@@ -56,12 +56,28 @@ export default class extends Controller {
         break
       case 1:
         msg = "Mostly Correct!"
-        msg += `<br>The correct answer is "${this.current_card.definition}."`
+        msg += `
+          <br>
+          <p>The correct answer is:</p>
+          <div class="card">
+            <div class="card-body">
+              ${this.current_card.definition}
+            </div>
+          </div>
+        `
         this.correct += 1
         break
       case 2:
         msg = "Incorrect!"
-        msg += `<br>The correct answer is "${this.current_card.definition}".`
+        msg += `
+          <br>
+          <p>The correct answer is:</p>
+          <div class="card">
+            <div class="card-body">
+              ${this.current_card.definition}
+            </div>
+          </div>
+        `
         this.incorrect += 1
         this.correctness = false
         this.overwriteButtonTarget.hidden = false 
