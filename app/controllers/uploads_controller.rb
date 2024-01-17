@@ -1,4 +1,5 @@
 class UploadsController < ApplicationController
+  before_action :check_for_user
 
   def new
   end
@@ -14,7 +15,7 @@ class UploadsController < ApplicationController
         redirect_to new_upload_path and return
       end
 
-      card_set = CardSet.new(name: file_name)
+      card_set = current_user.card_sets.build(name: file_name)
 
       file_data.shift
       file_data.each do |line|
@@ -32,5 +33,4 @@ class UploadsController < ApplicationController
   def upload_params
     params.require(:upload).permit(:file)
   end
-
 end

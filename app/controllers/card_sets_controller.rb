@@ -1,4 +1,5 @@
 class CardSetsController < ApplicationController
+  before_action :check_for_user, only: [:new, :edit, :update, :destroy] 
   before_action :set_card_set, only: [:show, :edit, :update, :destroy, :download]
 
   def index
@@ -10,12 +11,12 @@ class CardSetsController < ApplicationController
   end
 
   def new
-    @set = CardSet.new
+    @set = current_user.card_sets.build
     3.times { @set.cards.build }
   end
 
   def create
-    @set = CardSet.new(set_params)
+    @set = current_user.card_sets.build(set_params)
     respond_to do |format|
       if @set.save
         format.html { redirect_to card_set_url(@set), notice: "Set successfully created." }
