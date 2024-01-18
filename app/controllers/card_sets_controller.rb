@@ -1,6 +1,7 @@
 class CardSetsController < ApplicationController
   before_action :check_for_user, only: [:new, :edit, :update, :destroy] 
   before_action :set_card_set, only: [:show, :edit, :update, :destroy, :download]
+  before_action :check_for_correct_user, only: [:edit, :update, :destroy]
 
   def index
     @page_number = params[:page]
@@ -74,5 +75,12 @@ class CardSetsController < ApplicationController
 
   def set_params
     params.require(:card_set).permit(:name, :description, cards_attributes: [:id, :term, :definition, :_destroy])
+  end
+
+  def check_for_correct_user
+    unless @set.user_id == current_user.id
+      flash[:danger] = "You do not have permission to modify this set."
+      render :show 
+    end
   end
 end
