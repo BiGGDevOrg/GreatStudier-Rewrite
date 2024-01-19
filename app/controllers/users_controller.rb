@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   end
   
   def sets
-    @sets = @user.card_sets
+    @page_number = params[:page]
+    @sets = @user.card_sets.order(:name).page(@user.card_sets.page(@page_number).out_of_range? ? 1 : @page_number)
   end
 
   private

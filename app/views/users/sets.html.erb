@@ -9,8 +9,13 @@
 <div class="row">
   <div class="col">
     <%= render 'user_header' %>
+
     <% @sets.each do |set| %>
       <%= render 'card_sets/card', set: set %>
     <% end %>
+
+    <%= paginate @sets %> 
+
+    <br>
   </div>
 </div>
