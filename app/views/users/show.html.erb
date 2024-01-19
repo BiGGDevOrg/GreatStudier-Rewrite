@@ -1,5 +1,9 @@
 <% content_for :title do %>
-  <%= @user.id %>
+  <% if current_user.id == @user.id %>
+    Your Profile 
+  <% else %>
+    <%= @user.id %>'s Profile 
+  <% end %>
 <% end %>
 
 <div class="row">

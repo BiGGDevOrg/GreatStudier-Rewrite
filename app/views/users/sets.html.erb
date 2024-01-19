@@ -1,5 +1,9 @@
 <% content_for :title do %>
-  <%= @user.id %>'s Study Sets
+  <% if current_user.id == @user.id %>
+    Your Study Sets
+  <% else %>
+    <%= @user.id %>'s Study Sets
+  <% end %>
 <% end %>
 
 <div class="row">
