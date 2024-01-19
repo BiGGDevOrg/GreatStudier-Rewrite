@@ -20,14 +20,25 @@
         <a class="nav-link text-primary" href="https://github.com/BiGGDevOrg/GreatStudier-Rewrite" target="_blank">GitHub</a>
       </li>
     </ul>
-    <button class="nav-item dropdown btn btn-outline-primary" style="margin-right: 15px;">
-      <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-        New Set
-      </a>
-      <div class="dropdown-menu dropdown-menu-md-end">
-        <a class="dropdown-item" href="<%= new_card_set_path %>">Create a New Set</a>
-        <a class="dropdown-item" href="<%= new_upload_path %>">Upload a Set</a>
-      </div>
-    </button>
+
+    <ul class="navbar-nav ml-auto" style="margin-right: 15px;">
+      <li class="nav-item item dropdown" style="margin-right: 10px;">
+        <a class="dropdown btn btn-outline-primary dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+          New Set
+        </a>
+        <div class="dropdown-menu dropdown-menu">
+          <a class="dropdown-item" href="<%= new_card_set_path %>">Create a New Set</a>
+          <a class="dropdown-item" href="<%= new_upload_path %>">Upload a Set</a>
+        </div>
+      </li>
+
+      <li class="nav-item item">
+        <% if user_signed_in? %>
+          <a class="btn btn-primary" href="<%= user_path(current_user.id) %>">Profile</a>
+        <% else %>
+          <a class="btn btn-primary" href="<%= new_user_session_path %>">Login</a>
+        <% end %>
+      </li>
+    </ul>
   </div>
 </nav>
