@@ -1,0 +1,15 @@
+<h1></h1>
+<h5 class="text-secondary"><%= @user.id %></h5>
+
+<br>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link <%= 'active' if current_page?(user_url(@user)) %>" href="<%= user_url(@user) %>">Basic Information</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link <%= 'active' if current_page?(sets_user_url(@user)) %>" href="<%= sets_user_url(@user) %>">Study Sets</a>
+  </li>
+</ul>
+
+<br>

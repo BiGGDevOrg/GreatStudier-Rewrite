@@ -1,3 +1,12 @@
-<% @sets.each do |set| %>
-  <%= set.name %>
+<% content_for :title do %>
+  <%= @user.id %>'s Study Sets
 <% end %>
+
+<div class="row">
+  <div class="col">
+    <%= render 'user_header' %>
+    <% @sets.each do |set| %>
+      <%= render 'card_sets/card', set: set %>
+    <% end %>
+  </div>
+</div>
