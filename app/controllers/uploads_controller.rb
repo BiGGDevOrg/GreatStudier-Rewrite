@@ -22,8 +22,17 @@ class UploadsController < ApplicationController
         card_set.cards << Card.new(term: line_data[0].strip, definition: line_data[1].strip)
       end
 
-      card_set.save
-      redirect_to card_set_path(card_set), notice: "File successfully uploaded."
+      respond_to do |format|
+        if card_set.save
+          format.html { redirect_to card_set_url(card_set), notice: "Set successfully created." }
+          format.json { render :show, status: :created, location: card_set }
+        else
+          flash[:danger] = ["Unable to create set."]
+          flash[:danger].push(*card_set.errors) 
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: card_set.errors, status: :unprocessable_entity }
+        end
+      end
     end
   end
 
