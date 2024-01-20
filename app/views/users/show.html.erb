@@ -1,5 +1,5 @@
 <% content_for :title do %>
-  <% if current_user.id == @user.id %>
+  <% if !current_user.nil? && current_user.id == @user.id %>
     Your Profile 
   <% else %>
     <%= @user.id %>'s Profile 
