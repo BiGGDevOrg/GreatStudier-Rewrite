@@ -1,5 +1,5 @@
 class UploadsController < ApplicationController
-  before_action :check_for_user
+  before_action :authenticate_user!
 
   def new
   end

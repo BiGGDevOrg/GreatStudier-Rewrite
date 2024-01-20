@@ -1,5 +1,5 @@
 class CardSetsController < ApplicationController
-  before_action :check_for_user, only: [:new, :edit, :update, :destroy] 
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy] 
   before_action :set_card_set, only: [:show, :edit, :update, :destroy, :download]
   before_action :check_for_correct_user, only: [:edit, :update, :destroy]
 
