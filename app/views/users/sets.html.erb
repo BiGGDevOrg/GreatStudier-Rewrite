@@ -10,12 +10,15 @@
   <div class="col">
     <%= render 'user_header' %>
 
-    <% @sets.each do |set| %>
-      <%= render 'card_sets/card', set: set %>
+    <% unless @sets.empty? %>
+      <% @sets.each do |set| %>
+        <%= render 'card_sets/card', set: set %>
+      <% end %>
+
+      <%= paginate @sets %> 
+    <% else %>
+      This user currently does not have any sets.
     <% end %>
-
-    <%= paginate @sets %> 
-
     <br>
   </div>
 </div>
