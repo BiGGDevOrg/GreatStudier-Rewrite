@@ -1,0 +1,13 @@
+<% content_for :title do %>
+  Welcome
+<% end %>
+
+<h1>Hello <%= current_user.id %>!</h1>
+<hr>
+
+<% unless current_user.card_sets.empty? %>
+  <h3>Your Sets</h3>
+  <% current_user.card_sets.each do |set| %>
+    <%= render 'card_sets/card', set: set %>
+  <% end %>
+<% end %>
