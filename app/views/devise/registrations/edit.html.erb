@@ -1,4 +1,8 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% content_for :title do %>
+  Edit Settings
+<% end %>
+  
+<%= render 'users/user_header' %>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -24,13 +28,30 @@
                 input_html: { autocomplete: "current-password" } %>
   </div>
 
+  <br>
+
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update", class: "btn btn-primary" %>
   </div>
 <% end %>
+<br>
 
-<h3>Cancel my account</h3>
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete">Delete Account</button>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalTitle">Delete Account</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete your account? All sets created will also be deleted. This action <b>cannot</b> be undone!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <%= button_to 'Yes', registration_path(resource_name), method: :delete, class: 'btn btn-danger'%>
+      </div>
+    </div>
+  </div>
+</div>

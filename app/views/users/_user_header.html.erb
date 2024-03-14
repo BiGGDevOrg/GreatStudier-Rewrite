@@ -9,6 +9,11 @@
   <li class="nav-item">
     <a class="nav-link <%= 'active' if current_page?(sets_user_url(@user)) %>" href="<%= sets_user_url(@user) %>">Study Sets</a>
   </li>
+  <% if user_signed_in? && @user.id == current_user.id %>
+    <li class="nav-item">
+      <a class="nav-link <%= 'active' if current_page?(edit_user_registration_url) %>" href="<%= edit_user_registration_url %>">Edit Information</a>
+    </li>
+  <% end %>
 </ul>
 
 <br>
