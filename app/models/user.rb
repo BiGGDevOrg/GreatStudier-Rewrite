@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_many :card_sets, dependent: :destroy
   has_many :cards, through: :card_sets
+
+  validates :email, uniqueness: true
+  validates :username, uniqueness: true
 end
