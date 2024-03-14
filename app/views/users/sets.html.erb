@@ -2,7 +2,7 @@
   <% if user_signed_in? && current_user.id == @user.id %>
     Your Study Sets
   <% else %>
-    <%= @user.id %>'s Study Sets
+    <%= @user.username %>'s Study Sets
   <% end %>
 <% end %>
 

@@ -2,13 +2,14 @@
   <% if user_signed_in? && current_user.id == @user.id %>
     Your Profile 
   <% else %>
-    <%= @user.id %>'s Profile 
+    <%= @user.username %>'s Profile 
   <% end %>
 <% end %>
 
 <div class="row">
   <div class="col">
     <%= render 'user_header' %>
+    <p><b>User ID</b>: <%= @user.id %></p>
     <p><b>Account Creation Date</b>: <%= @user.created_at %></p>
 
     <% if !current_user.nil? && current_user.id == @user.id %>
